@@ -1,4 +1,4 @@
-
+import TaskBoard from '../taskBoard';
 
 import './main.scss';
 
@@ -8,6 +8,7 @@ class Main extends Component {
 
     return (
       <main className="main">
+        <TaskBoard />
       </main>
     )
   }

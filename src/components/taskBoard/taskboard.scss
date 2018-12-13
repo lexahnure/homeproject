@@ -1,0 +1,28 @@
+@import '../../variables.scss';
+
+.board {
+  position: relative;
+  background: white;
+  padding: $base * 10;
+  margin: auto;
+
+  .tasks {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: $base * 3;
+
+    & p {
+      padding: $base * 2 $base * 2 $base * 2 0;
+      margin: 0;
+    }
+
+    & strong {
+      align-self: center;
+    }
+  }
+
+  & a {
+    display: inline-block;
+    margin-top: $base * 8;
+  }
+}
