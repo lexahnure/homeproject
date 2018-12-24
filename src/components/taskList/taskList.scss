@@ -1,0 +1,63 @@
+@import '../../variables.scss';
+
+.taskList {
+  position: relative;
+  background: white;
+  padding: $base * 10;
+  margin: auto;
+  width: calc(100% - #{$base * 20});
+  height: calc(100% - #{$base * 20});
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: white;
+  }
+
+  ul {
+    padding-left: $base * 4;
+    li {
+      padding: $base 0;
+      line-height: 1;
+      span {
+        visibility: hidden;
+        display: inline-block;
+        padding: $base $base 0 $base;
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-position: $base $base;
+        &.delete {
+          background-image: url('../../images/cross.svg');
+        }
+        &.done {
+          background-image: url('../../images/checkMark.svg');
+        }
+        &.inprogress {
+          background-image: url('../../images/inProgress.svg');
+        }
+      }
+      &:hover {
+        span {
+          visibility: visible;
+          display: inline-block;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+
+  .completed {
+    color: $gray-500;
+    text-decoration: line-through;
+  }
+  .uncompleted {
+    color: $gray-800;
+  }
+}
