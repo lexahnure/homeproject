@@ -15,7 +15,6 @@ class TaskList extends React.PureComponent {
       .then((originTodos) => {
         this.setState({ originTodos });
         this.setState({ todo: originTodos });
-        console.log(todo);
       });
   }
 

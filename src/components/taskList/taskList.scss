@@ -6,7 +6,18 @@
   padding: $base * 10;
   margin: auto;
   width: calc(100% - #{$base * 20});
-  height: 50%;
+  height: calc(100% - #{$base * 20});
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: white;
+  }
 
   ul {
     padding-left: $base * 4;
@@ -28,7 +39,7 @@
           background-image: url('../../images/checkMark.svg');
         }
         &.inprogress {
-          background-image: url('../../images/inprogress.svg');
+          background-image: url('../../images/inProgress.svg');
         }
       }
       &:hover {
