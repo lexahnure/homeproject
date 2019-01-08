@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; 
+    padding: $base * 2 $base * 4;
+    background: white;
+    border-bottom: 1px solid $gray-300;
+    align-self: center;
+}
+.logo {
+    img {
+        height: $base * 15;
+    }
+}
+
+.user-box {
+    align-self: center;
+}
