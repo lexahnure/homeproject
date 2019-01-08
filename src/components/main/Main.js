@@ -33,6 +33,8 @@ class Main extends Component {
         {
           user
             ? <main className="main">
+              <Tabs days={days} markDone={markDone} delTask={delTask} dayWeek={dayWeek} >
+              </Tabs>
             </main>
             : <Login onLogin={onLogin} /> //<Form />
         }

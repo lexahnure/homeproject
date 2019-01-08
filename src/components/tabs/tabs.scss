@@ -1,0 +1,48 @@
+@import '../../variables.scss';
+
+.tabs {
+  .nav-tab {
+    ul {
+      display: flex;
+      list-style: none;
+      margin: $base * 8 auto auto auto;
+      padding: 0;
+      background: rgba($gray-100, 0);
+      border-radius: 3px;
+      overflow: hidden;
+      height: 100%;
+
+      li {
+        &.active a {
+          background: white;
+          color: $gray-800;
+        }
+        &:hover {
+          background: rgba($gray-100, .6);
+        }
+
+      }
+
+      a {
+        display: block;
+        padding: 7px 10px;
+        text-decoration: none;
+        color: $gray-600;
+        &:hover {
+          color: $gray-700;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    opacity: 1;
+    transition: opacity .5s;
+    padding: $base * 8;
+    background: white;
+
+    .active {
+      opacity: 1;
+    }
+  }
+}
