@@ -1,1 +1,1 @@
-First repository.
+Home project. Todos manager.
