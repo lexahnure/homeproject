@@ -1,17 +1,12 @@
-import { getTasks } from '../../services';
+import { Tabs, Tab } from '../../components/tabs';
 
 import './tasks.scss';
 
-class TaskList extends Component {
-  state = {
+const Tasks = ({ days, markDone, delTask, dayWeek }) => (
+  <Tabs markDone={markDone} delTask={delTask}>
+    <Tab days={days} dayWeek={dayWeek} />
+  </Tabs>
 
-  }
+);
 
-  render() {
-    return (
-      <div />
-    );
-  }
-}
-
-export default TaskList;
+export default Tasks;

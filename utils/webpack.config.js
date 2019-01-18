@@ -1,11 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const args = process.argv;
 const isFileCSS = args.includes('--styles');
 const date = Date.now();
+
+const imageExt = ['jpg', 'jpeg', 'gif', 'svg', 'png'];
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -19,6 +22,12 @@ const plugins = [
     React: 'react',
     Component: ['react', 'Component'],
   }),
+  new CopyWebpackPlugin(
+    imageExt.map(ext => ({
+      from: `**/*/*${ext}`,
+      to: 'images/[name].[ext]'
+    }))
+  ),
 ];
 
 if (isFileCSS) {
@@ -31,10 +40,18 @@ module.exports = {
   output: {
     filename: 'bundle-[name].js',
     path: path.resolve(__dirname, '../dist'),
-    chunkFilename: 'vendors.js'
+    chunkFilename: 'vendors.js',
+    publicPath: '/',
   },
 
   mode: 'development',
+
+  resolve: {
+    alias: {
+      services: path.resolve(__dirname, '../src/services'),
+      components: path.resolve(__dirname, '../src/components')
+    }
+  },
 
   module: {
     rules: [
@@ -61,11 +78,18 @@ module.exports = {
         test: /\.s?css$/,
         use: [
           isFileCSS ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-          'sass-loader'
+          "css-loader",
+          "sass-loader"
         ]
       },
-
+      {
+        //IMAGE LOADER
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[ext]'
+        }
+      },
     ]
   },
 
@@ -81,7 +105,10 @@ module.exports = {
     contentBase: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     port: 9000,
-    hot: true
-  }
+    hot: true,
+    historyApiFallback: true,
+  },
+
+  devtool: 'inline-source-map'
 
 };

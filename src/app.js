@@ -1,17 +1,14 @@
+import { BrowserRouter as Router } from 'react-router-dom';
 import ReactDom from 'react-dom';
 import AppComp from './appComponent';
 
 import './reset.scss';
 import './styles.scss';
 
-class Wrapper extends Component {
+const Wrapper = (
+  <Router>
+    <AppComp />
+  </Router>
+);
 
-  render() {
-
-    return (
-      <AppComp />
-    )
-  }
-};
-
-ReactDom.render( <Wrapper/>, document.getElementById('app') );
+ReactDom.render(Wrapper, document.getElementById('app'));

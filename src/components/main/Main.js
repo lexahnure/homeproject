@@ -1,44 +1,13 @@
-import TaskBoard from '../taskBoard';
-import TaskList from '../taskList';
-import {Tabs} from '../tabs';
-import { Tab } from '../tabs';
-import Login from '../../pages/login';
+import Loader from '../loader';
 
 import './main.scss';
 
-class Main extends Component {
-  state = {
-    dayWeek: 0,
-  }
-
-  componentDidMount() {
-    this.setState({ dayWeek: (new Date().getDay()) });
-  }
-
-  render() {
-    const {
-      onLogin,
-      days,
-      user,
-      markDone,
-      delTask
-    } = this.props;
-    
-    const {
-      dayWeek
-    } = this.state;
-
-    return (
-      <>
-        {
-          user
-            ? <main className="main">
-            </main>
-            : <Login onLogin={onLogin} /> //<Form />
-        }
-      </>
-    )
-  }
-}
+const Main = ({ loading, children }) => (
+  <main className="wrapper">
+    <div className="main">
+      { loading ? <Loader /> : children }
+    </div>
+  </main>
+);
 
 export default Main;

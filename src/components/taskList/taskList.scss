@@ -1,0 +1,106 @@
+@import '../../variables.scss';
+
+.taskList {
+  position: relative;
+  background: white;
+  margin: auto;
+
+  input[type=text] {
+    display: inline-block;
+    margin: auto auto auto 0;
+  }
+
+  .toolbar {
+    padding: $base * 4;
+    border-bottom: 1px solid $gray-200;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    button {
+      margin-left: 0;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: $base * 4;
+
+    li {
+      margin-left: $base * 5;
+      padding: $base 0;
+      line-height: 1;
+      margin-bottom: $base;
+
+      &.uncompleted {
+        span:not(.elemControl) {
+          padding: $base;
+          position: relative;
+          &:hover {
+            background-color: rgba($gray-100, 1);
+          }
+        }
+      }
+
+      & .elemControl {
+          visibility: hidden;
+          display: inline-block;
+          padding: 0;
+          width: 24px;
+          height: 24px;
+          background-color: transparent;
+          background-repeat: no-repeat;
+          background-position: center;
+          position: absolute;
+          top: $base;
+          opacity: .75;
+
+          &.delete {
+            margin-left: $base;
+            background-image: url('../../images/cross.svg');
+          }
+
+          &.done {
+            margin-left: $base * 7;
+            background-image: url('../../images/checkMark.svg');
+          }
+
+          &.inprogress {
+            margin-left: $base * 13;
+            background-image: url('../../images/inProgress.svg');
+          }
+
+          &:hover {
+            background-color: transparent;
+            opacity: 1;
+          }
+        }
+
+        &:hover {
+          & .elemControl {
+            visibility: visible;
+            display: inline-block;
+            cursor: pointer;
+          }
+        }
+    }
+  }
+
+
+  .completed {
+    span:not(.elemControl) {
+      padding: $base;
+      position: relative;
+
+      & a {
+        color: $gray-500;
+        text-decoration: line-through;
+      }
+    }
+  }
+  .uncompleted {
+    & a{ 
+      color: $gray-800;
+      text-decoration: none;
+    }
+  }
+}
