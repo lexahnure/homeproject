@@ -1,10 +1,9 @@
-import daysName from '../constants/daysName';
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
 export const TabNav = ({ tabs, selectIndex, selectTab }) => {
   const itemClick = (event, index) => {
     event.preventDefault();
     selectTab(index);
-  }
+  };
 
   return (
     <nav className="nav-tab">
@@ -19,7 +18,7 @@ export const TabNav = ({ tabs, selectIndex, selectTab }) => {
                 href="#"
                 onClick={event => itemClick(event, index)}
               >
-                {daysName[index]}
+                {tab}
               </a>
             </li>
           ))

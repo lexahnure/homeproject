@@ -1,4 +1,27 @@
-input {
-    display: block;
-    margin-bottom: 0.75rem;
+@import '../../variables.scss';
+
+// input {
+//     display: block;
+//     margin-bottom: 0.75rem;
+// }
+
+.login {
+
+    h2 {
+        max-width: fit-content;
+        width: auto;
+        margin: $base * 4 auto;
+      }
+      
+    input {
+        &[type=text], &[type=password] {
+          display: block;
+          margin: auto auto 0.75rem auto;
+          width: 286px;
+          box-sizing: border-box;
+          height: 100%;
+          font: 1rem/1rem 'IBM Plex Sans';
+        }
+    }
+
 }

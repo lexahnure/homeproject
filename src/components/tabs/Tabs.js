@@ -1,6 +1,7 @@
 import { TabNav } from './TabNav';
 import { Tab } from './Tab';
 import TaskList from '../taskList';
+import daysName from '../constants/daysName';
 
 import './tabs.scss';
 
@@ -10,7 +11,7 @@ export class Tabs extends Component {
   }
 
   componentDidMount() {
-    const { dayWeek } = this.props;
+    const { dayWeek } = this.props.children.props;
     this.setState({ selectIndex: dayWeek });
   }
 
@@ -19,13 +20,18 @@ export class Tabs extends Component {
   }
 
   render() {
-    const { days, markDone, delTask } = this.props;
+    const { markDone, delTask } = this.props;
     const { selectIndex } = this.state;
+    const { children } = this.props;
+    const { days } = children.props;
+    const tabs = days && days.map((day, index) => daysName[index]);
+
+    console.log(tabs);
 
     return (
       <div className="tabs">
         {
-          days && <TabNav tabs={days} selectIndex={selectIndex} selectTab={this.selectTab} />
+          days && <TabNav tabs={tabs} selectIndex={selectIndex} selectTab={this.selectTab} />
         }
         <div className="tab-content">
           {

@@ -1,11 +1,22 @@
 @import '../../variables.scss';
 
-.main {
-    display: grid;
-    grid-gap: $base * 5;
-    grid-template-columns: 1fr 1fr;
-    max-width: 1440px;
-    margin: 0 auto;
-    width: 100vw;
-    height: 100vh;
+.wrapper {
+  margin: 0 auto;
+  height: 100%;
+  width: 1200px;
+  
+  .main {
+    background: white;
+    border-radius: $base * 2;
+    padding: $base * 8;
+    margin: $base * 8;
+    min-width: calc(100% - #{$base * 32});
+    min-height: calc(100% - #{$base * 32});
+  }
+}
+
+@media (max-width: 1200px) {
+  .wrapper {
+    width: 100%;
+  }
 }

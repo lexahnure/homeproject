@@ -7,22 +7,22 @@
 
   input[type=text] {
     display: inline-block;
-    margin: 0 $base * 6 $base * 4 0;
-  }
-
-  button {
-    position: absolute;
-    right: 0;
+    margin: auto auto auto 0;
   }
 
   .toolbar {
-    border-bottom: 1px solid $gray-400;
+    padding: $base * 4;
+    border-bottom: 1px solid $gray-200;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   ul {
-    margin-top: $base * 4;
-    padding-left: $base * 4;
+    margin: 0;
+    padding: $base * 4;
+
     li {
+      margin-left: $base * 5;
       padding: $base 0;
       line-height: 1;
       margin-bottom: $base;
@@ -83,9 +83,14 @@
 
 
   .completed {
-    & a {
-      color: $gray-500;
-      text-decoration: line-through;
+    span:not(.elemControl) {
+      padding: $base;
+      position: relative;
+
+      & a {
+        color: $gray-500;
+        text-decoration: line-through;
+      }
     }
   }
   .uncompleted {

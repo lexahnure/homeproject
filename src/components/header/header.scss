@@ -3,17 +3,31 @@
 .header {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr; 
-    padding: $base * 2 $base * 4;
+    padding: $base * 4 $base * 8;
     background: white;
-    border-bottom: 1px solid $gray-300;
-    align-self: center;
-}
-.logo {
-    img {
-        height: $base * 15;
+    border-bottom: 1px solid $gray-200;
+    z-index: 3;
+
+    .user-box {
+        align-self: right;
+        margin: auto 0 auto auto;
+
+        button {
+            display: inline-block;
+        }
+        
+        span {
+            margin-right: $base * 3;
+        }
     }
 }
 
-.user-box {
-    align-self: center;
+.active {
+    color: $accent;
+}
+
+.logo {
+    img {
+        height: $base * 12;
+    }
 }

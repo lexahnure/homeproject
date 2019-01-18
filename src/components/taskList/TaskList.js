@@ -11,17 +11,20 @@ class TaskList extends React.PureComponent {
     if (nextProps.content !== prevState.originTodos) {
       return { originTodos: nextProps.content, todo: nextProps.content, value: '' };
     }
+    return null;
   }
 
   changeHandler = (event) => {
     const { originTodos } = this.state;
+    const filteredTodos = originTodos.filter((el) => {
+      if (event.target.value.length > 1) {
+        return el.title.toLowerCase().includes(event.target.value.toLowerCase());
+      }
+      return { todo: originTodos };
+    });
+
     this.setState({
-      todo: originTodos.filter((el) => {
-        if (event.target.value.length > 1) {
-          return el.title.toLowerCase().includes(event.target.value.toLowerCase());
-        }
-        return { todo: originTodos };
-      }),
+      todo: filteredTodos,
       value: event.target.value
     });
   }
@@ -50,8 +53,8 @@ class TaskList extends React.PureComponent {
             {
               !el.done
               && <>
-                <span className="elemControl delete" onClick={() => delTask(el.id)} />
-                <span className="elemControl done" onClick={() => { el.done = true; return markDone(el); }} />
+                <span className="elemControl delete" onClick={() => delTask(el)} />
+                <span className="elemControl done" onClick={() => markDone(el)} />
                 <span className="elemControl inprogress" onClick={this.taskControlHandler} />
               </>
             }
@@ -68,6 +71,7 @@ class TaskList extends React.PureComponent {
         </div>
         <ul>
           {
+            todo &&
             todo.sort((el) => {
               if (el.done) return 1;
               if (!el.done) return -1;
