@@ -15,6 +15,10 @@
     border-bottom: 1px solid $gray-200;
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    button {
+      margin-left: 0;
+    }
   }
 
   ul {
